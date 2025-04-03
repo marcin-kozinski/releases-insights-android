@@ -1,0 +1,2 @@
+[plugins]
+dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version = "2.14.0" }
