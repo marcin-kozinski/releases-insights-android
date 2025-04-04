@@ -1,0 +1,5 @@
+# Gradle
+## Project-specific cache
+.gradle/
+## Build output
+build/
