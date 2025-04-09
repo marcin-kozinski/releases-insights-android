@@ -1,3 +1,1 @@
-plugins {
-    alias(libs.plugins.dependency.analysis)
-}
+plugins { alias(libs.plugins.dependency.analysis) }
