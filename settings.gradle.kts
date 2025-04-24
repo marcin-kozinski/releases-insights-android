@@ -6,3 +6,5 @@ gitHooks {
 }
 
 rootProject.name = "releases-insights-android"
+
+include(":source:releases-insights-api")

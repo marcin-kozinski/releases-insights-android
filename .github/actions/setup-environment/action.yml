@@ -8,9 +8,6 @@ inputs:
   gradle:
     description: Set up Gradle
     default: 'false'
-  gradle-daemon:
-    description: If Gradle is set up, optionally disable the daemon
-    default: 'true'
   brew:
     description: Set up Homebrew
     default: 'false'
@@ -34,10 +31,6 @@ runs:
     - name: Set up Gradle
       if: ${{ inputs.gradle == 'true' }}
       uses: gradle/actions/setup-gradle@06832c7b30a0129d7fb559bcc6e43d26f6374244 # v4.3.1
-    - name: Disable Gradle daemon
-      if: ${{ inputs.gradle == 'true' && inputs.gradle-daemon == 'false' }}
-      run: echo "GRADLE_OPTS=-Dorg.gradle.daemon=false" >> "$GITHUB_ENV"
-      shell: bash
     - name: Set up Homebrew
       if: ${{ inputs.brew == 'true' || inputs.ktfmt == 'true' }}
       run: ./.github/actions/setup-environment/setup-homebrew.sh
