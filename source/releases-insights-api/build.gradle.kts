@@ -28,21 +28,6 @@ kotlin {
     }
 }
 
-repositories {
-    exclusiveContent {
-        forRepository { mavenCentral() }
-        filter {
-            @Suppress("UnstableApiUsage") includeGroupAndSubgroups("org.jetbrains")
-            @Suppress("UnstableApiUsage") includeGroupAndSubgroups("com.squareup")
-            includeGroup("io.ktor")
-            includeGroup("org.slf4j")
-            includeGroup("junit")
-            includeGroup("org.hamcrest")
-            includeGroup("dev.zacsweers.metro")
-        }
-    }
-}
-
 dependencies { platform(libs.kotlinx.coroutines.bom) }
 
 tasks.register<Test>("test") {

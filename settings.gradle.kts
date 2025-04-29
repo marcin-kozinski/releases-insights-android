@@ -1,8 +1,8 @@
-plugins { id("org.danilopianini.gradle-pre-commit-git-hooks") version "2.0.23" }
+pluginManagement { includeBuild("build-logic") }
 
-gitHooks {
-    preCommit { from { "scripts/pre-commit.sh" } }
-    createHooks(overwriteExisting = true)
+plugins {
+    id("releasesinsights.dependency-management")
+    id("releasesinsights.pre-commit-git-hooks")
 }
 
 rootProject.name = "releases-insights-android"
