@@ -3,4 +3,17 @@
   "extends": [
     "config:best-practices",
   ],
+  "packageRules": [
+    {
+      "description": [
+        "Group Kotlin compiler plugins with Kotlin.",
+        // Currently Metro is the only compiler plugin.
+      ],
+      "matchPackageNames": [
+        "org.jetbrains.kotlin.*",
+        "dev.zacsweers.metro:dev.zacsweers.metro.gradle.plugin",
+      ],
+      "groupName": "metro kotlin compiler plugin",
+    }
+  ],
 }
