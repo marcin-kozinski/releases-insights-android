@@ -39,6 +39,7 @@ class MavenCentralInclusiveContentDescriptor(wrapped: InclusiveRepositoryContent
         includeGroupAndSubgroups("org.jetbrains")
         includeGroupAndSubgroups("com.google")
         includeGroupAndSubgroups("com.squareup")
+        includeGroupAndSubgroups("com.jakewharton")
     }
 
     fun includeTrustedPlugins() {
