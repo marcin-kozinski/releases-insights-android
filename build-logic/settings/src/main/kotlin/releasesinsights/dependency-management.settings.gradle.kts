@@ -21,6 +21,11 @@ dependencyResolutionManagement {
             includeTrustedLibraries()
         }
     }
+    versionCatalogs {
+        create("ktorLibs") {
+            from("io.ktor:ktor-version-catalog:3.2.3")
+        }
+    }
 }
 
 fun RepositoryHandler.mavenCentralFilteredTo(
