@@ -14,16 +14,16 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             api(libs.kotlinx.datetime)
-            api(libs.ktor.client.core)
+            api(ktorLibs.client.core)
             implementation(libs.kotlinx.serialization.json)
-            implementation(libs.ktor.client.content.negotiation)
-            implementation(libs.ktor.client.resources)
-            implementation(libs.ktor.serialization.kotlinx.json)
+            implementation(ktorLibs.client.contentNegotiation)
+            implementation(ktorLibs.client.resources)
+            implementation(ktorLibs.serialization.kotlinx.json)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
             implementation(libs.kotlinx.coroutines.test)
-            implementation(libs.ktor.client.mock)
+            implementation(ktorLibs.client.mock)
         }
     }
 }
