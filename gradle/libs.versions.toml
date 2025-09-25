@@ -12,4 +12,4 @@ kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serializa
 dependency-analysis = { id = "com.autonomousapps.dependency-analysis", version = "2.19.0" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-metro = { id = "dev.zacsweers.metro", version = "0.6.5" }
+metro = { id = "dev.zacsweers.metro", version = "0.6.6" }
