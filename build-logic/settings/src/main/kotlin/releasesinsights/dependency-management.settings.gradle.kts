@@ -60,6 +60,7 @@ class MavenCentralInclusiveContentDescriptor(wrapped: InclusiveRepositoryContent
         includeModule("javax.inject", "javax.inject")
         includeModule("org.checkerframework", "checker-qual")
         includeModule("org.sonatype.oss", "oss-parent")
+        includeModule("org.jspecify", "jspecify")
     }
 
     fun includeTrustedLibraries() {
