@@ -13,9 +13,10 @@ import io.ktor.http.append
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
+import kotlin.time.Clock
 import kotlin.time.Duration.Companion.days
+import kotlin.time.ExperimentalTime
 import kotlinx.coroutines.test.runTest
-import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.Month
 import kotlinx.datetime.TimeZone
@@ -24,6 +25,7 @@ import kotlinx.datetime.format
 import kotlinx.datetime.toInstant
 import releasesinsights.api.ReleasesInsightsApi.Version
 
+@OptIn(ExperimentalTime::class)
 class ReleasesInsightsApiTest {
     fun api(handler: MockRequestHandler): ReleasesInsightsApi {
         return KtorApi(HttpClient(MockEngine(handler)), "https://releases-insights.api.test/")

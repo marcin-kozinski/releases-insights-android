@@ -11,13 +11,15 @@ import io.ktor.client.statement.HttpResponse
 import io.ktor.http.HttpStatusCode
 import io.ktor.resources.Resource
 import io.ktor.serialization.kotlinx.json.json
-import kotlinx.datetime.Instant
+import kotlin.time.ExperimentalTime
+import kotlin.time.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime
 import kotlinx.datetime.UtcOffset
 import kotlinx.datetime.format
 import kotlinx.datetime.format.DateTimeComponents
 import kotlinx.datetime.format.char
+import kotlinx.datetime.parse
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.descriptors.PrimitiveKind
@@ -50,7 +52,9 @@ interface ReleasesInsightsApi {
         }
     }
 
-    @Serializable data class ReleaseSchedule(val version: String, val release: ReleaseInstant)
+    @OptIn(ExperimentalTime::class)
+    @Serializable
+    data class ReleaseSchedule(val version: String, val release: ReleaseInstant)
 }
 
 private suspend inline fun <reified Content> response(
@@ -100,6 +104,7 @@ class KtorApi(baseClient: HttpClient, url: String) : ReleasesInsightsApi {
     }
 }
 
+@OptIn(ExperimentalTime::class)
 typealias ReleaseInstant = @Serializable(with = ReleaseInstantSerializer::class) Instant
 
 val ReleaseInstantFormat =
@@ -110,9 +115,10 @@ val ReleaseInstantFormat =
         offset(UtcOffset.Formats.ISO)
     }
 
+@OptIn(ExperimentalTime::class)
 private object ReleaseInstantSerializer : KSerializer<Instant> {
     override val descriptor: SerialDescriptor =
-        PrimitiveSerialDescriptor(ReleaseInstant::class.qualifiedName!!, PrimitiveKind.STRING)
+        PrimitiveSerialDescriptor("ReleaseInstant", PrimitiveKind.STRING)
 
     override fun deserialize(decoder: Decoder) =
         Instant.parse(decoder.decodeString(), ReleaseInstantFormat)
