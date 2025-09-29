@@ -16,17 +16,10 @@ import kotlin.time.Instant
 import kotlinx.datetime.LocalDate
 import kotlinx.datetime.LocalTime
 import kotlinx.datetime.UtcOffset
-import kotlinx.datetime.format
 import kotlinx.datetime.format.DateTimeComponents
 import kotlinx.datetime.format.char
-import kotlinx.datetime.parse
-import kotlinx.serialization.KSerializer
+import kotlinx.datetime.serializers.FormattedInstantSerializer
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.descriptors.PrimitiveKind
-import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
-import kotlinx.serialization.descriptors.SerialDescriptor
-import kotlinx.serialization.encoding.Decoder
-import kotlinx.serialization.encoding.Encoder
 import kotlinx.serialization.json.Json
 
 sealed interface ApiResponse<Content> {
@@ -115,15 +108,5 @@ val ReleaseInstantFormat =
         offset(UtcOffset.Formats.ISO)
     }
 
-@OptIn(ExperimentalTime::class)
-private object ReleaseInstantSerializer : KSerializer<Instant> {
-    override val descriptor: SerialDescriptor =
-        PrimitiveSerialDescriptor("ReleaseInstant", PrimitiveKind.STRING)
-
-    override fun deserialize(decoder: Decoder) =
-        Instant.parse(decoder.decodeString(), ReleaseInstantFormat)
-
-    override fun serialize(encoder: Encoder, value: Instant) {
-        encoder.encodeString(value.format(ReleaseInstantFormat))
-    }
-}
+private object ReleaseInstantSerializer :
+    FormattedInstantSerializer("ReleaseInstant", ReleaseInstantFormat)
