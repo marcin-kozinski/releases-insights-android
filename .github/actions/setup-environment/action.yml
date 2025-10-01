@@ -30,7 +30,7 @@ runs:
         # See: https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#Hosted-Tool-Cache
     - name: Set up Gradle
       if: ${{ inputs.gradle == 'true' }}
-      uses: gradle/actions/setup-gradle@748248ddd2a24f49513d8f472f81c3a07d4d50e1 # v4.4.4
+      uses: gradle/actions/setup-gradle@4d9f0ba0025fe599b4ebab900eb7f3a1d93ef4c2 # v5.0.0
     - name: Set up Homebrew
       if: ${{ inputs.brew == 'true' || inputs.ktfmt == 'true' }}
       run: ./.github/actions/setup-environment/setup-homebrew.sh
