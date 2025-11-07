@@ -24,7 +24,7 @@ dependencyResolutionManagement {
     versionCatalogs {
         // Gradle does this by default:
         // create("libs") { from(files("gradle/libs.versions.toml")) }
-        create("ktorLibs") { from("io.ktor:ktor-version-catalog:3.3.1") }
+        create("ktorLibs") { from("io.ktor:ktor-version-catalog:3.3.2") }
     }
 }
 
